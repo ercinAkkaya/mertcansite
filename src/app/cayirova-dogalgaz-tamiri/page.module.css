@@ -1,0 +1,124 @@
+.pageContainer {
+    padding-top: 80px;
+    /* Offset for sticky header */
+}
+
+/* Page Header */
+.pageHeader {
+    background-color: var(--color-primary-navy);
+    color: var(--color-white);
+    padding: var(--space-16) 0 var(--space-24);
+    text-align: center;
+    position: relative;
+}
+
+.pageTitle {
+    color: var(--color-white);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: var(--space-4);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pageSubtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Main Content Area */
+.mainContent {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-8);
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+    margin-bottom: var(--space-16);
+}
+
+@media (min-width: 1024px) {
+    .mainContent {
+        padding: var(--space-12);
+    }
+}
+
+.contentWrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contentWrapper h2 {
+    font-size: 2rem;
+    color: var(--color-primary-navy);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+}
+
+.contentWrapper h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary-blue);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+}
+
+.contentWrapper p {
+    color: var(--color-text-main);
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+    font-size: 1.05rem;
+}
+
+.contentWrapper ul {
+    list-style-type: disc;
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-6);
+    color: var(--color-text-main);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.contentWrapper li {
+    margin-bottom: var(--space-2);
+}
+
+.contentWrapper strong {
+    color: var(--color-primary-navy);
+    font-weight: 600;
+}
+
+.highlightBox {
+    background-color: var(--color-primary-light);
+    border-left: 4px solid var(--color-primary-blue);
+    padding: var(--space-4) var(--space-6);
+    margin: var(--space-6) 0;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.highlightBox p {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* SEO Call to Action inside Content */
+.contentCta {
+    background-color: var(--color-primary-navy);
+    color: var(--color-white);
+    padding: var(--space-8);
+    border-radius: var(--radius-md);
+    text-align: center;
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-8);
+}
+
+.contentCta h3 {
+    color: var(--color-white) !important;
+    margin-top: 0 !important;
+}
+
+.contentCta p {
+    color: rgba(255, 255, 255, 0.8) !important;
+}

@@ -1,0 +1,83 @@
+.stickyContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: var(--color-white);
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+}
+
+@media (min-width: 768px) {
+    .stickyContainer {
+        bottom: var(--space-6);
+        left: auto;
+        right: var(--space-6);
+        background-color: transparent;
+        box-shadow: none;
+        flex-direction: column;
+        gap: var(--space-4);
+        align-items: flex-end;
+    }
+}
+
+.buttonGroup {
+    display: flex;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .buttonGroup {
+        flex-direction: column;
+        gap: var(--space-4);
+        width: auto;
+    }
+}
+
+.button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-2);
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+    .button {
+        flex: none;
+        padding: var(--space-3) var(--space-6);
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.btnWhatsapp {
+    background-color: var(--color-whatsapp);
+}
+
+.btnWhatsapp:hover {
+    background-color: #1eaf53;
+}
+
+.btnCall {
+    background-color: var(--color-primary-blue);
+}
+
+.btnCall:hover {
+    background-color: var(--color-primary-navy);
+}
+
+.text {
+    display: inline-block;
+}
