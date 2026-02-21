@@ -257,7 +257,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS SLIDER */}
       <section className="section section-light">
         <div className="container">
           <div className="text-center" style={{ marginBottom: '3rem' }}>
@@ -265,21 +265,31 @@ export default function Home() {
             <p className="text-muted">Kocaeli bölgesinde binlerce yüzü gülen müşterimizden bazıları.</p>
           </div>
 
-          <div className={styles.testimonialGrid}>
-            {[
-              { name: "Ahmet K.", text: "Gece 11'de kombimiz kaloriferleri ısıtmamaya başladı. Aradık, sağ olsunlar 30 dakikada gelip anakartı onararak sorunu çözdüler. Çok profesyoneller." },
-              { name: "Merve S.", text: "Doğalgaz kokusu alıyorduk, kırmadan dökmeden cihazla ufacık bir rekor arızası olduğunu buldular. Evimizi harabeye çevirmeden hallettikleri için teşekkürler." },
-              { name: "Kemal Y.", text: "Yeni eve taşınırken kombi değişimi montajı için SM Mühendislik ile çalıştım. İZGAZ onayı süreçlerini bile onlar halletti. Gözü kapalı itimat edebilirsiniz." }
-            ].map((t, i) => (
-              <div key={i} className={styles.testimonialCard}>
-                <svg className={styles.quoteIcon} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-                <div className={styles.stars}>
-                  {[...Array(5)].map((_, idx) => <svg key={idx} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>)}
+          <div className={styles.testimonialSlider}>
+            <div className={styles.testimonialTrack}>
+              {[
+                { name: "Ahmet K.", text: "Gece 11'de kombimiz kaloriferleri ısıtmamaya başladı. Aradık, sağ olsunlar 30 dakikada gelip anakartı onararak sorunu çözdüler. Çok profesyoneller." },
+                { name: "Merve S.", text: "Doğalgaz kokusu alıyorduk, kırmadan dökmeden cihazla ufacık bir rekor arızası olduğunu buldular. Evimizi harabeye çevirmeden hallettikleri için teşekkürler." },
+                { name: "Kemal Y.", text: "Yeni eve taşınırken kombi değişimi montajı için SM Mühendislik ile çalıştım. İZGAZ onayı süreçlerini bile onlar halletti. Gözü kapalı itimat edebilirsiniz." },
+                { name: "Selin B.", text: "Petek temizliği için çağırdık, ev gerçekten daha iyi ısınmaya başladı. Gelen ustalar çok kibar ve temiz çalıştılar." },
+                { name: "Turgut M.", text: "Darıca'daki restoranımızın devasa tesisat sorununu aynı gün içinde çözüp işimizi kurtardılar. Ekiplerine %100 güvenebilirsiniz." },
+                // Duplicate for seamless loop
+                { name: "Ahmet K.", text: "Gece 11'de kombimiz kaloriferleri ısıtmamaya başladı. Aradık, sağ olsunlar 30 dakikada gelip anakartı onararak sorunu çözdüler. Çok profesyoneller." },
+                { name: "Merve S.", text: "Doğalgaz kokusu alıyorduk, kırmadan dökmeden cihazla ufacık bir rekor arızası olduğunu buldular. Evimizi harabeye çevirmeden hallettikleri için teşekkürler." },
+                { name: "Kemal Y.", text: "Yeni eve taşınırken kombi değişimi montajı için SM Mühendislik ile çalıştım. İZGAZ onayı süreçlerini bile onlar halletti. Gözü kapalı itimat edebilirsiniz." },
+                { name: "Selin B.", text: "Petek temizliği için çağırdık, ev gerçekten daha iyi ısınmaya başladı. Gelen ustalar çok kibar ve temiz çalıştılar." },
+                { name: "Turgut M.", text: "Darıca'daki restoranımızın devasa tesisat sorununu aynı gün içinde çözüp işimizi kurtardılar. Ekiplerine %100 güvenebilirsiniz." }
+              ].map((t, i) => (
+                <div key={i} className={styles.testimonialCard}>
+                  <svg className={styles.quoteIcon} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
+                  <div className={styles.stars}>
+                    {[...Array(5)].map((_, idx) => <svg key={idx} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>)}
+                  </div>
+                  <p className={styles.testimonialText}>"{t.text}"</p>
+                  <div className={styles.clientName}>— {t.name}</div>
                 </div>
-                <p className={styles.testimonialText}>"{t.text}"</p>
-                <div className={styles.clientName}>— {t.name}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

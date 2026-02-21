@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './Footer.module.css';
+import { locations } from '@/lib/seoData';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -60,6 +61,18 @@ export default function Footer() {
                     </ul>
                 </div>
 
+            </div>
+
+            {/* SEO Location Links (Subtle Internal Linking) */}
+            <div className={`container ${styles.seoLinksContainer}`}>
+                <div className={styles.seoLinks}>
+                    <p className={styles.seoLinksTitle}>Hizmet Bölgelerimiz:</p>
+                    {locations.map((loc) => (
+                        <Link key={loc.id} href={`/${loc.id}-dogalgaz-tamiri`}>
+                            {loc.name} Doğalgaz Tamiri
+                        </Link>
+                    ))}
+                </div>
             </div>
 
             <div className={styles.footerBottom}>

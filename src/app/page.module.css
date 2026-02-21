@@ -392,26 +392,47 @@
 }
 
 
-/* TESTIMONIALS SECTION */
-.testimonialGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
+/* TESTIMONIALS SLIDER */
+.testimonialSlider {
   margin-top: var(--space-12);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: var(--space-4) 0;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-@media (min-width: 768px) {
-  .testimonialGrid {
-    grid-template-columns: repeat(3, 1fr);
+.testimonialTrack {
+  display: flex;
+  gap: var(--space-6);
+  width: max-content;
+  animation: scrollTestimonials 40s linear infinite;
+}
+
+.testimonialTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollTestimonials {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - (var(--space-6) / 2)));
   }
 }
 
 .testimonialCard {
+  width: 350px;
+  flex-shrink: 0;
   background: var(--color-white);
   padding: var(--space-8);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   position: relative;
+  white-space: normal;
 }
 
 .quoteIcon {

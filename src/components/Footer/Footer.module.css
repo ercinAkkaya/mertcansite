@@ -192,3 +192,38 @@
     font-size: 0.95rem;
     font-weight: 500;
 }
+
+/* Subtle SEO Links */
+.seoLinksContainer {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-8);
+    border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-top: var(--space-6);
+}
+
+.seoLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    font-size: 0.8rem;
+}
+
+.seoLinksTitle {
+    color: #475569;
+    /* Very muted slate */
+    margin: 0;
+    margin-right: var(--space-2);
+}
+
+.seoLinks a {
+    color: #475569;
+    /* Very muted slate */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.seoLinks a:hover {
+    color: #94A3B8;
+    /* Slightly brighter on hover */
+}
