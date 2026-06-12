@@ -1,13 +1,13 @@
-import type { Metadata } from 'next';
 import styles from './page.module.css';
+import { buildPageMetadata } from '@/lib/seoMetadata';
 
-export const metadata: Metadata = {
-    title: 'Çayırova Doğalgaz Tamiri | Aynı Gün Servis | SM Mühendislik',
-    description: 'Çayırova doğalgaz tamiri, garantili kombi servisi ve tesisat onarımı. Kocaeli doğalgaz tamircisi arayanlar için yetkili ve sertifikalı ustalarla 7/24 hizmet.',
-    alternates: {
-        canonical: 'https://www.smmhendislik.com/cayirova-dogalgaz-tamiri',
-    }
-};
+export const metadata = buildPageMetadata({
+    title: 'Çayırova Doğalgaz Tamiri | 7/24 Aynı Gün Servis',
+    description:
+        'Çayırova doğalgaz tamiri, kombi servisi ve kaçak tespiti. Kocaeli ve İstanbul hattında MYK belgeli ekip, garantili işçilik, aynı gün müdahale.',
+    path: '/cayirova-dogalgaz-tamiri',
+    keywords: ['çayırova doğalgaz tamiri', 'çayırova kombi servisi', 'kocaeli doğalgaz ustası'],
+});
 
 export default function CayirovaDogalgazTamiriPage() {
     return (

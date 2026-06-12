@@ -1,73 +1,39 @@
 import { MetadataRoute } from 'next';
-import { seoPages } from '@/lib/seoData';
+import { seoPages, services } from '@/lib/seoData';
+import { baseUrl } from '@/lib/siteConfig';
 
 export const dynamic = 'force-static';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.smmhendislik.com';
-
-    const dynamicLocationPages = seoPages.map((page) => ({
-        url: `${baseUrl}/${page.slug}`,
-        lastModified: new Date(),
+const staticPages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[0]['changeFrequency'] }[] = [
+    { path: '', priority: 1, changeFrequency: 'daily' },
+    { path: '/hakkimizda', priority: 0.8, changeFrequency: 'monthly' },
+    { path: '/iletisim', priority: 0.9, changeFrequency: 'monthly' },
+    { path: '/hizmet-bolgeleri', priority: 0.95, changeFrequency: 'weekly' },
+    { path: '/hizmetlerimiz', priority: 0.95, changeFrequency: 'weekly' },
+    { path: '/cayirova-dogalgaz-tamiri', priority: 0.9, changeFrequency: 'weekly' },
+    ...services.map((s) => ({
+        path: s.path,
+        priority: 0.9,
         changeFrequency: 'weekly' as const,
-        priority: 0.8,
+    })),
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+    const now = new Date();
+
+    const staticEntries = staticPages.map((page) => ({
+        url: `${baseUrl}${page.path}`,
+        lastModified: now,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
     }));
 
-    return [
-        {
-            url: baseUrl,
-            lastModified: new Date(),
-            changeFrequency: 'daily',
-            priority: 1,
-        },
-        {
-            url: `${baseUrl}/hakkimizda`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/iletisim`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/cayirova-dogalgaz-tamiri`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/hizmetlerimiz/dogalgaz-tesisati`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/hizmetlerimiz/dogalgaz-kacak-tespiti`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/hizmetlerimiz/kombi-montaji`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/hizmetlerimiz/kombi-bakimi`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/hizmetlerimiz/kombi-tamiri`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        ...dynamicLocationPages,
-    ];
+    const dynamicEntries = seoPages.map((page) => ({
+        url: `${baseUrl}/${page.slug}`,
+        lastModified: now,
+        changeFrequency: 'weekly' as const,
+        priority: page.priority === 1 ? 0.85 : 0.75,
+    }));
+
+    return [...staticEntries, ...dynamicEntries];
 }

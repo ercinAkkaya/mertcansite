@@ -1,57 +1,20 @@
-import type { Metadata } from 'next';
 import styles from './page.module.css';
+import JsonLd from '@/components/Seo/JsonLd';
+import { buildPageMetadata } from '@/lib/seoMetadata';
+import { localBusinessSchema } from '@/lib/structuredData';
 
-export const metadata: Metadata = {
-    title: 'İletişim | SM Mühendislik Kocaeli',
-    description: 'SM Mühendislik ile iletişime geçin. Acil kombi arızası, doğalgaz tesisatı ve gaz kaçağı çözümleri için Kocaeli ve Çayırova genelinde 7/24 hizmetinizdeyiz.',
-    alternates: {
-        canonical: 'https://www.smmhendislik.com/iletisim',
-    }
-};
+export const metadata = buildPageMetadata({
+    title: 'İletişim | İstanbul & Kocaeli 7/24 Servis',
+    description:
+        'SM Mühendislik iletişim: Gebze, Pendik, Tuzla ve İstanbul genelinde acil doğalgaz ve kombi servisi. 0554 560 9954 — 7/24 ulaşın.',
+    path: '/iletisim',
+    keywords: ['sm mühendislik iletişim', 'gebze kombi servisi telefon', 'acil doğalgaz servisi'],
+});
 
 export default function IletisimPage() {
-    const schemaMarkup = {
-        "@context": "https://schema.org",
-        "@type": "Plumber",
-        "name": "SM Mühendislik Kocaeli",
-        "image": "https://www.smmhendislik.com/images/hero_background.png",
-        "url": "https://www.smmhendislik.com",
-        "telephone": "05545609954",
-        "priceRange": "₺₺",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Çayırova",
-            "addressRegion": "Kocaeli",
-            "addressCountry": "TR"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.8251,
-            "longitude": 29.3879
-        },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            ],
-            "opens": "00:00",
-            "closes": "23:59"
-        }
-    };
-
     return (
         <div className={styles.pageContainer}>
-            {/* JSON-LD Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-            />
+            <JsonLd data={localBusinessSchema()} />
 
             {/* HEADER SECTION */}
             <section className={styles.pageHeader}>
@@ -99,7 +62,7 @@ export default function IletisimPage() {
                                     </div>
                                     <div className={styles.itemDetails}>
                                         <h3>Hizmet Bölgemiz</h3>
-                                        <p>Çayırova başta olmak üzere Kocaeli geneli.</p>
+                                        <p>İstanbul ve Kocaeli geneli — Gebze, Pendik, Tuzla ana hat.</p>
                                     </div>
                                 </div>
                             </div>

@@ -184,3 +184,68 @@
     font-size: 1.15rem !important;
     margin-bottom: var(--space-6) !important;
 }
+
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+.faqItem {
+    background: var(--color-primary-light);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(37, 99, 235, 0.08);
+}
+
+.faqItem h4 {
+    color: var(--color-primary-navy);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-2);
+    font-weight: 700;
+}
+
+.faqItem p {
+    color: var(--color-text-muted);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.relatedLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+}
+
+.relatedLinks a {
+    display: inline-flex;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary-blue);
+    transition: all 0.2s ease;
+}
+
+.relatedLinks a:hover {
+    background: var(--color-primary-blue);
+    color: var(--color-white);
+    border-color: var(--color-primary-blue);
+}
+
+.ctaButtons {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-top: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.ctaButtons .btn {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+}

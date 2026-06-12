@@ -1,14 +1,13 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
 import styles from './page.module.css';
+import { buildPageMetadata } from '@/lib/seoMetadata';
 
-export const metadata: Metadata = {
-    title: 'Hakkımızda | SM Mühendislik | Kocaeli Doğalgaz Firması',
-    description: 'SM Mühendislik Kocaeli, Çayırova bölgesinde yılların tecrübesiyle doğalgaz tesisatı ve kombi servisi hizmeti veren yetkili mühendislik firmasıdır.',
-    alternates: {
-        canonical: 'https://www.smmhendislik.com/hakkimizda',
-    }
-};
+export const metadata = buildPageMetadata({
+    title: 'Hakkımızda | İstanbul & Kocaeli Doğalgaz Mühendislik',
+    description:
+        'SM Mühendislik: İstanbul ve Kocaeli genelinde MYK belgeli ekip ile doğalgaz tesisatı, kombi servisi ve kaçak tespiti. 10+ yıl tecrübe, garantili işçilik.',
+    path: '/hakkimizda',
+    keywords: ['sm mühendislik', 'kocaeli doğalgaz firması', 'istanbul kombi servisi'],
+});
 
 export default function HakkimizdaPage() {
     return (

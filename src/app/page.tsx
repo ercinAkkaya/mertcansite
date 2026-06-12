@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import { allRegions, getLocationsByRegion, priorityLocations, regionLabels } from '@/lib/seoData';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -45,9 +45,17 @@ export default function Home() {
       )
     },
     {
+      title: 'Doğalgaz Tamiri',
+      desc: 'Acil tesisat arızalarına 7/24 müdahale, kırmadan onarım ve 1 yıl garanti.',
+      link: '/hizmetlerimiz/dogalgaz-tamiri',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+      )
+    },
+    {
       title: 'Petek Temizliği',
       desc: 'Özel makinalar ve koruyucu kimyasallarla tam detaylı radyatör temizliği.',
-      link: '/hizmetlerimiz/kombi-bakimi',
+      link: '/hizmetlerimiz/petek-temizligi',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20" /><path d="M6 10V6a4 4 0 0 1 5-2 4 4 0 0 1 5 2v4" /><path d="M6 14v4a4 4 0 0 0 5 2 4 4 0 0 0 5-2v-4" /></svg>
       )
@@ -58,21 +66,14 @@ export default function Home() {
     <div className={styles.main}>
       {/* HERO SECTION */}
       <section className={styles.hero}>
-        <Image
-          src="/images/hero_background.png"
-          alt="Çayırova Doğalgaz Tamiri ve Kombi Servisi"
-          priority
-          fill
-          quality={100}
-          className={styles.heroBg}
-        />
+        <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.heroOverlay}></div>
 
         <div className={`container ${styles.heroContent}`}>
           <div className="animate-fade-in-up">
             <span className={styles.heroBadge}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: 'var(--color-success)' }}></span>
-              7/24 Aktif Çayırova Servisi
+              İstanbul, Kocaeli, Sakarya & Ankara — 7/24 Servis
             </span>
           </div>
 
@@ -81,7 +82,7 @@ export default function Home() {
           </h1>
 
           <p className={`${styles.heroDesc} animate-fade-in-up animate-delay-2`}>
-            Kocaeli genelinde yılların tecrübesi, MYK belgeli uzman kadro ve son teknoloji ekipmanlarla garantili tesisat, kaçak tespiti ve kombi servis hizmeti sunuyoruz.
+            İstanbul, Kocaeli, Sakarya ve Ankara genelinde mobil ekip yönlendiriyoruz. Gebze, Pendik, Adapazarı ve Çankaya ana hatlarımızdır. MYK belgeli uzman kadro, son teknoloji ekipman ve garantili işçilik.
           </p>
 
           <div className={`${styles.heroActions} animate-fade-in-up animate-delay-3`}>
@@ -160,21 +161,16 @@ export default function Home() {
           <div className={styles.aboutRow}>
             <div className={styles.aboutImageWrapper}>
               <div className={styles.imageDecoration}></div>
-              <Image
-                src="/images/service_van.png"
-                alt="SM Mühendislik Servis Aracı"
-                width={600}
-                height={400}
-                quality={90}
-                className={styles.aboutImage}
-              />
+              <div className={styles.aboutImagePlaceholder}>
+                İstanbul &amp; Kocaeli<br />Mobil Servis Ağı
+              </div>
             </div>
             <div className={styles.aboutContent}>
               <h2 className="text-navy">Profesyonel Mimari, <br /><span className="text-gradient">Kalıcı Çözümler</span></h2>
               <p className="text-muted" style={{ fontSize: '1.1rem' }}>
-                <strong>SM Mühendislik</strong>, Kocaeli ve Çayırova ilçesinde doğalgaz tesisatı, kaçak tespiti,
+                <strong>SM Mühendislik</strong>, İstanbul ve Kocaeli genelinde doğalgaz tesisatı, kaçak tespiti,
                 kombi montajı ve arıza onarımı konularında uzmanlaşmış yetkili bir kuruluştur.
-                Amacımız, yapılarınızı teknolojik donanımlı araçlarımız ve kalifiye ekibimizle en güvenli standartlara taşımaktır.
+                Ana operasyon bölgelerimiz Gebze, Pendik, Tuzla ve Çayırova olmak üzere tüm İstanbul ilçelerine hizmet veriyoruz.
               </p>
               <ul style={{ margin: '2rem 0', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-primary-navy)', fontWeight: 600 }}>
@@ -194,6 +190,43 @@ export default function Home() {
                 Biz Kimiz? Detaylı Oku &rarr;
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICE AREAS — SEO internal linking */}
+      <section className={`section ${styles.areasSection}`}>
+        <div className="container">
+          <div className="text-center" style={{ marginBottom: '2rem' }}>
+            <h2 className="text-navy">Hizmet Verdiğimiz Bölgeler</h2>
+            <p className={styles.areasIntro}>
+              5 bölgede 50+ ilçe için ilçe bazlı servis sayfalarımızla aradığınız hizmete doğrudan ulaşın.
+            </p>
+          </div>
+          <div className={styles.regionTabs}>
+            {allRegions.map((region) => (
+              <div key={region} className={styles.regionCard}>
+                <h3>
+                  {regionLabels[region]}
+                  {(region === 'kocaeli' || region === 'sakarya' || region === 'ankara') && (
+                    <span className={styles.regionBadge}>Aktif</span>
+                  )}
+                </h3>
+                <div className={styles.areaLinks}>
+                  {(region === 'kocaeli'
+                    ? priorityLocations.filter((l) => l.region === 'kocaeli')
+                    : getLocationsByRegion(region).slice(0, 6)
+                  ).map((loc) => (
+                    <Link key={loc.id} href={`/${loc.id}-kombi-tamiri`}>
+                      {loc.name}
+                    </Link>
+                  ))}
+                </div>
+                <Link href="/hizmet-bolgeleri" className={styles.regionCta}>
+                  Tüm {regionLabels[region]} sayfaları →
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -262,7 +295,7 @@ export default function Home() {
         <div className="container">
           <div className="text-center" style={{ marginBottom: '3rem' }}>
             <h2 className="text-navy">Müşterilerimiz Ne Diyor?</h2>
-            <p className="text-muted">Kocaeli bölgesinde binlerce yüzü gülen müşterimizden bazıları.</p>
+            <p className="text-muted">İstanbul ve Kocaeli bölgesinde binlerce mutlu müşterimizden bazıları.</p>
           </div>
 
           <div className={styles.testimonialSlider}>
@@ -299,7 +332,8 @@ export default function Home() {
         <div className={`container ${styles.ctaBannerWrap}`}>
           <h2 className={styles.ctaTitle}>Sorununuz mu var? Hemen Müdahale Edelim.</h2>
           <p className={styles.ctaDesc}>
-            Çayırova doğalgaz ustası mı arıyorsunuz? Aynı gün servis ve ücretsiz keşif avantajından yararlanmak için bize ulaşın.
+            Gebze, Pendik, Tuzla veya İstanbul&apos;un herhangi bir ilçesinde doğalgaz veya kombi sorunu mu var?
+            Aynı gün servis için hemen bize ulaşın.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <a href="tel:05545609954" className="btn" style={{ background: 'var(--color-white)', color: 'var(--color-primary-blue)', fontSize: '1.2rem', boxShadow: 'var(--shadow-lg)' }}>

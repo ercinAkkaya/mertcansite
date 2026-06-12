@@ -178,3 +178,68 @@
     margin-top: var(--space-6);
     width: 100%;
 }
+
+.dropdownWrap {
+    position: relative;
+}
+
+.dropdownWrap .navLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 240px;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: var(--space-3);
+    list-style: none;
+    z-index: 60;
+    animation: slideDown 0.2s ease forwards;
+}
+
+.dropdown a {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    transition: background 0.2s ease;
+}
+
+.dropdown a:hover {
+    background: var(--color-primary-light);
+    color: var(--color-primary-blue);
+}
+
+.mobileServicesTitle {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-primary-light);
+}
+
+.mobileSubLink {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-primary-blue);
+    padding: var(--space-2) 0 var(--space-2) var(--space-4);
+}

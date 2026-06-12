@@ -1,0 +1,41 @@
+.banner {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--space-12);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background:
+        linear-gradient(135deg, rgba(11, 17, 33, 0.85) 0%, rgba(37, 99, 235, 0.55) 100%),
+        radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.4) 0%, transparent 45%),
+        linear-gradient(160deg, #0b1121 0%, #1e3a8a 50%, #0f172a 100%);
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.6;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bannerWithImage {
+    background: #0b1121;
+}
+
+.bannerWithImage::after {
+    background: linear-gradient(
+        135deg,
+        rgba(11, 17, 33, 0.15) 0%,
+        rgba(37, 99, 235, 0.1) 100%
+    );
+    opacity: 1;
+}
+
+.bannerImage {
+    object-fit: cover;
+    z-index: 0;
+}
